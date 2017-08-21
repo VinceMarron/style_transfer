@@ -1,5 +1,7 @@
 # Style Transfer as Optimal Transport 
 
+Please click through images and download to see detail. 
+
 <p float="right">
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -33,10 +35,10 @@
 
 </p>
 
-Please click images to see detail. 
+
 
 Currently a work in progress.. please stay tuned for updates
-Also let me know if you would be interested in more explanation/theory behind this formulation. If there is interest, I will write this up formally. 
+Let me know if you are interested in more explanation/theory behind this formulation. If there is interest, I will write this up formally. 
 
 ## An algorithm that transfers the distribution of visual characteristics, or style, of one image onto a second image via an [Optimal Transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) plan. Implemented in [Tensorflow](https://github.com/tensorflow/tensorflow).
 
@@ -68,7 +70,7 @@ All testing done with tensorflow 1.3, python 3.5
 README work in progress..
 
 
-
+Source of vgg.py script:
 
 ```
 @misc{athalye2015neuralstyle,
