@@ -57,7 +57,7 @@ Let me know if you are interested in more explanation/theory behind this formula
 ## Files:
 [example.ipynb](example.ipynb) - notebook that demonstrates use case, output in [ipynb_example](/ipynb_example)
 
-[vgg.py](vgg.py) - script that unpacks 'imagenet-vgg-verydeep-19.mat' found [here](https://github.com/anishathalye/neural-style) , citation below
+[vgg.py](vgg.py) - script that unpacks 'imagenet-vgg-verydeep-19.mat' found [here](https://github.com/anishathalye/neural-style) 
 
 [synthesize.py](synthesize.py) - synthesizes an image that represents a 'subject' image with the visual characteristics of a 'style' image 
 
@@ -72,14 +72,5 @@ All testing done with tensorflow 1.3, python 3.5
 
 
 
-Source of vgg.py script:
+Source of vgg.py script: [here](https://github.com/anishathalye/neural-style) 
 
-```
-@misc{athalye2015neuralstyle,
-  author = {Anish Athalye},
-  title = {Neural Style},
-  year = {2015},
-  howpublished = {\url{https://github.com/anishathalye/neural-style}},
-  note = {commit xxxxxxx}
-}
-```
