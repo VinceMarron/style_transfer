@@ -2,7 +2,6 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
-from scipy.misc import imsave
 import time
 import vgg
 
@@ -132,7 +131,8 @@ class SynthesizeImage(object):
       plt.figure(figsize=(20,40))
       plt.imshow(self.img_out)
 
-      imsave((self.path + savename + '.png'), self.img_out)
+      im = Image.fromarray(self.img_out)
+      im.save(self.path + savename)
 
       ##Maybe want to set subj_arr to synth_arr but maybe not
 
@@ -181,4 +181,6 @@ class SynthesizeImage(object):
       plt.figure(figsize=(20,40))
       plt.imshow(self.img_out)
 
-      imsave((self.path + savename + '.png'), self.img_out)
+
+      im = Image.fromarray(self.img_out)
+      im.save(self.path + savename)
