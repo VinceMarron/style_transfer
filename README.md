@@ -1,6 +1,6 @@
 # Style Transfer as Optimal Transport 
 
-## This is a repository for an algorithm that transfers the distribution of visual characteristics, or style, of one image onto a second image via an [Optimal Transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) plan. It is implemented in [Tensorflow](https://github.com/tensorflow/tensorflow).
+## This is a [Tensorflow](https://github.com/tensorflow/tensorflow) implementation of an algorithm that transfers the distribution of visual characteristics, or style, of one image onto a second image via an [Optimal Transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) plan.
 
 <img src="ipynb_example/kanagawa_surf.png" width="960"/>
 
@@ -77,15 +77,14 @@ Let me know if you are interested in more explanation/theory behind this formula
 
 ## Requirements: 
 
+Utilizes python packages: tensorflow, numpy, scipy.io, PIL.Image, time
+
+Tested using tensorflow 1.3, python 3.5
 
 Must have the .mat file containing vgg network weights and biases in parent directory, can be found: http://www.vlfeat.org/matconvnet/models/beta16/imagenet-vgg-verydeep-19.mat ((MD5 8ee3263992981a1d26e73b3ca028a123)
 
 
-See [example.ipynb](example.ipynb) for a use case. 
-
-All testing done with tensorflow 1.3, python 3.5
-
-Source of vgg.py script: [here](https://github.com/anishathalye/neural-style) 
+See [example.ipynb](example.ipynb) for use case. 
 
 
 
