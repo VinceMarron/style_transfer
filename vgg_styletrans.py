@@ -251,7 +251,7 @@ class TransferStyle(object):
       self.img_out = Image.fromarray(self.synth_arr[0].eval().astype('uint8'))
       self.img_out.save(savename)
 
-      print("synthesize image saved:", savename)
+      print("synthesized image saved:", savename)
 
   @staticmethod    
   def pool_func(x, pool_type):
