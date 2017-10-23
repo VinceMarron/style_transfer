@@ -1,8 +1,5 @@
 # Copyright (c) 2017 Vincent Marron | Released under MIT License
 
-#calculate gradient on toy example, match with closed form calc...
-
-
 import tensorflow as tf
 import numpy as np
 from PIL import Image
@@ -37,9 +34,8 @@ class TransferStyle(object):
     'relu5_3', 'conv5_4']
 
     self.graph = tf.Graph()
-    #self.graph.device('/gpu:0')
 
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8,
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9,
                                 allow_growth=True)
     self.config = tf.ConfigProto(gpu_options=gpu_options,
                                  operation_timeout_in_ms=99999)
@@ -163,12 +159,11 @@ class TransferStyle(object):
             covar_synth_activs = (tf.matmul(synth_activs - mean_synth_activs,
                               synth_activs - mean_synth_activs, transpose_a=True)/
                               tf.cast(layer_shape[1]*layer_shape[2], tf.float32))
-
+            
             trace_covar_synth = tf.trace(covar_synth_activs)
             
             mean_stl_activs, trace_covar_stl, root_covar_stl_activs = self.style_desc[layer]
-
-            #calculates Wasserstein metric between the two Gaussian vectors' distributions
+            
             mean_diff_squared = tf.reduce_sum(tf.square(mean_stl_activs-mean_synth_activs))
 
             covar_prod = tf.matmul(tf.matmul(root_covar_stl_activs,covar_synth_activs),root_covar_stl_activs)
@@ -184,7 +179,7 @@ class TransferStyle(object):
 
 
 
-  def synthesize_image(self, savename, optimizer = 'adam', steps=100, lr=1., log_ims=True, report_int=10,
+  def synthesize_image(self, savename, optimizer = 'adam', steps=50, lr=1., log_ims=True, report_int=10,
                       blur_int=0, blur_dim=15, blur_sig_sq=1.):
     """invokes an optimizer and creates synthesized image
 
