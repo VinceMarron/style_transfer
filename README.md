@@ -1,15 +1,18 @@
 # Style Transfer as Optimal Transport 
 
-## An algorithm that transfers the distribution of visual characteristics, or *style*, of a reference image onto a subject image via an Optimal Transport plan. Implemented in TensorFlow. 
+## An algorithm that transfers the distribution of visual characteristics, or *style*, of a reference image onto a subject image via an Optimal Transport plan. 
 
 >"What features and statistics are characteristics of a texture pattern, so that texture pairs that share the same features and statistics cannot be told apart by pre-attentive human visual perception?” -- [Bela Julesz](https://en.wikipedia.org/wiki/B%C3%A9la_Julesz)
 
 
 # How it Works:
 
+For a general description and several pictures please see [style-transfer-theory.pdf](style-transfer-theory.pdf). For an explanation of the use of L2-Wasserstein instead of the Gatys et. al framework see [why_wasserstein.ipynb](why_wasserstein.ipynb). 
+
+
 tl;dr - Runs the subject and style images through the convolution layers of the vgg19 network. Extracts probabalistic descriptions (first two moments) of the convolution filter activations across the respective images. Calculates L2-Wasserstein distance between these probability distributions and modifies the subject image to minimize this distance.  
 
-For a general description and several pictures please see [style-transfer-theory.pdf](style-transfer-theory.pdf). For an explanation of the use of L2-Wasserstein instead of the Gatys et. al framework see [why_wasserstein.ipynb](why_wasserstein.ipynb). 
+
 
 # Running
 
@@ -34,5 +37,5 @@ synthesized image saved: media/wave_kngwa.jpg
 ![input-content](media/wave_kngwa_frame.jpg)
 
 
-
+## Sample grid of subjects x styles
 ![input-content](media/medium_panel.jpg)
