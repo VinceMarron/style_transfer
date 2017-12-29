@@ -11,7 +11,7 @@ class TransferStyle(object):
      
     vgg19 weights binary (115.5 MB) can be downloaded from:         
     https://app.box.com/v/vgg19-conv-npy    
-    md5sum bf8a930fec201a0a2ade13d3f7274d0e
+    md5sum: bf8a930fec201a0a2ade13d3f7274d0e
     
     Args:
         vgg_weight_path (str): Path to the '.npy' binary containing vgg19 weights
@@ -57,7 +57,7 @@ class TransferStyle(object):
 
     Args:
         style_image (PIL image object): displays the style to be transferred
-        eval_out (bool): wether to open tf session and eval style description to np array
+        eval_out (bool): whether to open tf session and eval style description to np array
         pool_type (str): 'avg', 'max', or 'none', type of pooling to use
         last_layer (str): vgg network will process image up to this layer
 
@@ -69,11 +69,9 @@ class TransferStyle(object):
                                    .astype('float32'))
 
       x = self.style_arr-self.mean_pixel
-
-      self.stop = self.all_layers.index(last_layer)+1
-
-      for i, layer in enumerate(self.all_layers[:self.stop]):
-
+      
+      for layer in self.all_layers[:self.all_layers.index(last_layer)+1]:
+          
         if layer[:2] == 're': x = tf.nn.relu(x)
 
         elif layer[:2] == 'po': x = self.pool_func(x, pool_type)
@@ -100,8 +98,8 @@ class TransferStyle(object):
           #takes root of covar_stl_activs
           #(necessary for wdist, as tf cannot take eig of non-symmetric matrices)
           eigvals,eigvects = tf.self_adjoint_eig(covar_stl_activs)
-          eigval_mat = tf.diag(tf.sqrt(tf.maximum(eigvals,0.)))
-          root_covar_stl_activs = tf.matmul(tf.matmul(eigvects, eigval_mat)
+          eigroot_mat = tf.diag(tf.sqrt(tf.maximum(eigvals,0.)))
+          root_covar_stl_activs = tf.matmul(tf.matmul(eigvects, eigroot_mat)
                                                 ,eigvects,transpose_b=True)
 
           trace_covar_stl = tf.reduce_sum(tf.maximum(eigvals,0))
@@ -130,17 +128,18 @@ class TransferStyle(object):
       self.synth_arr = tf.Variable((np.expand_dims(subj_image,0)[:,:,:,:3]).astype('float32')
                                    , trainable=True, dtype=tf.float32)
 
-      if loss_layers==[]: loss_layers = self.all_layers[:self.stop]
-
+      if loss_layers==[]: loss_layers = self.all_layers
+        
       y = self.synth_arr-self.mean_pixel
 
-      for i, layer in enumerate(self.all_layers[:self.stop]):
-
+      for layer in self.all_layers:
         if layer[:2] == 're': y = tf.nn.relu(y)
 
         elif layer[:2] == 'po': y= self.pool_func(y, pool_type)
 
         elif layer[:2] == 'co':
+          if layer not in self.style_desc.keys(): break
+          
           kernel = self.vgg_ph[layer+'_kernel']
           bias = self.vgg_ph[layer+'_bias']
 
@@ -173,7 +172,7 @@ class TransferStyle(object):
 
             #loss can be slightly negative because of the 'maximum' on eigvals of covar_prod
             #could fix with trace_covar_synth = tf.reduce_sum(tf.maximum(eigvals_synth,0))
-            #but that would mean non-critical computation
+            #but that would mean extra non-critical computation
 
             self.loss += mean_diff_squared+trace_covar_stl+trace_covar_synth-2*var_overlap
 
