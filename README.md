@@ -7,12 +7,11 @@
 
 # How it Works:
 
-For a general description and several pictures please see [style-transfer-theory.pdf](style-transfer-theory.pdf). For an explanation of the use of L2-Wasserstein instead of the Gatys et. al framework see [why_wasserstein.ipynb](why_wasserstein.ipynb). 
+* For a general description and pictures: [style-transfer-theory.pdf](style-transfer-theory.pdf). 
+* For an explanation of the use of L2-Wasserstein distance instead of the loss function from the [Gatys et. al](https://arxiv.org/abs/1508.06576) framework see [why_wasserstein.ipynb](why_wasserstein.ipynb). 
 
 
-tl;dr - Runs the subject and style images through the convolution layers of the vgg19 network. Extracts probabalistic descriptions (first two moments) of the convolution filter activations across the respective images. Calculates L2-Wasserstein distance between these probability distributions and modifies the subject image to minimize this distance.  
-
-
+tl;dr - Passes a subject and style image through the convolution layers of the vgg19 network. Extracts probabalistic descriptions (first two moments) of the convolution filter activations. Calculates L2-Wasserstein distance between these probability distributions and then modifies the subject image optimally to minimize this distance.  
 
 # Running
 
