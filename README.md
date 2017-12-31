@@ -36,6 +36,7 @@ synthesized image saved: media/wave_kngwa.jpg
 ![input-content](media/wave_kngwa_frame.jpg)
 
 
+## Picture of Ben Bernanke transformed to represent selected styles
 ![_](https://i.imgur.com/Qlagcg3.jpg)
 
 ## Sample grid of subjects x styles
