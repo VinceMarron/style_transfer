@@ -36,5 +36,7 @@ synthesized image saved: media/wave_kngwa.jpg
 ![input-content](media/wave_kngwa_frame.jpg)
 
 
+![_](https://i.imgur.com/Qlagcg3.jpg)
+
 ## Sample grid of subjects x styles
 ![input-content](media/medium_panel.jpg)
