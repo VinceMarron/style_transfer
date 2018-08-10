@@ -2,6 +2,9 @@
 
 ## An algorithm that transfers the distribution of visual characteristics, or *style*, of a reference image onto a subject image via an Optimal Transport plan. 
 
+
+![input-content](media/panel.jpg)
+
 >"What features and statistics are characteristics of a texture pattern, so that texture pairs that share the same features and statistics cannot be told apart by pre-attentive human visual perception?” -- [Bela Julesz](https://en.wikipedia.org/wiki/B%C3%A9la_Julesz)
 
 
@@ -9,9 +12,11 @@
 
 * For a general description and pictures: [style-transfer-theory.pdf](style-transfer-theory.pdf). 
 * For an explanation of the use of L2-Wasserstein distance instead of the loss function from the [Gatys et. al](https://arxiv.org/abs/1508.06576) framework see [why_wasserstein.ipynb](why_wasserstein.ipynb). 
+*[Demo video](https://vimeo.com/284207984)
 
 
 tl;dr - Passes a subject and style image through the convolution layers of the vgg19 network. Extracts probabalistic descriptions (first two moments) of the convolution filter activations. Calculates L2-Wasserstein distance between these probability distributions and then modifies the subject image optimally to minimize this distance.  
+
 
 # Running
 
@@ -34,10 +39,3 @@ synthesized image saved: media/wave_kngwa.jpg
 ```
 
 ![input-content](media/wave_kngwa_frame.jpg)
-
-
-## Picture of Ben Bernanke transformed to represent selected styles
-![_](https://i.imgur.com/Qlagcg3.jpg)
-
-## Sample grid of subjects x styles
-![input-content](media/medium_panel.jpg)
