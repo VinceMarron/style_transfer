@@ -16,12 +16,10 @@ def main():
   
   style_image = Image.open(args.style)
   subject_image = Image.open(args.subject)
-  loss_layers = ['conv1_2', 'conv2_2','conv3_2', 
-                 'conv3_4', 'conv4_2', 'conv4_4',]
   
   make=TransferStyle(args.vggnet)
-  make.describe_style(style_image, last_layer='conv4_4')
-  make.infer_loss(subject_image, loss_layers=loss_layers)
+  make.describe_style(style_image)
+  make.infer_loss(subject_image)
   make.synthesize_image(args.output, optimizer = 'bfgs', steps=args.steps)
 
 def make_parser():
@@ -35,7 +33,7 @@ def make_parser():
   parser.add_argument('--output', dest='output',
                       help='path for output', default='output.jpg')
   parser.add_argument('--steps', dest='steps', type=int,
-                      help='# of steps optimizer can run', default=50)
+                      help='# of steps optimizer can run', default=80)
   return parser
 
 
